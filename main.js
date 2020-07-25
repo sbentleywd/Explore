@@ -98,12 +98,12 @@ const renderForecast = (day) => {
 	let weatherContent = createWeatherHTML(day);
   $weatherDiv.append(weatherContent);
 }
-
+/*
 const renderMaps = (location) => {
   let mapsContent = createMapsHTML(location);
   $mapsDiv.append(mapsContent)
 }
-
+*/
 
 const executeSearch = () => {
   $venueDivs.forEach(venue => venue.empty());
@@ -112,7 +112,7 @@ const executeSearch = () => {
   $container.css("visibility", "visible");
   getVenues().then(venues => renderVenues(venues));
   getForecast().then(forecast => renderForecast(forecast));
-  renderMaps($input.val())
+  //renderMaps($input.val())
   return false;
 }
 
