@@ -41,11 +41,9 @@ const getVenues = async () => {
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
-      console.log(response);
       const jsonResponse = await response.json();
       const venues = jsonResponse.response.groups[0].items.map(item => item.venue);
       numVenues = jsonResponse.response.groups[0].items.length;
-      console.log(jsonResponse);
       generateArray(numVenues-1);
       
       for (i=0; i < numVenues; i++) {
