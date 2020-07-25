@@ -65,7 +65,7 @@ app.get("/attractions/:location", async (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    const buildPath = path.join(__dirname, '..', 'public');
+    const buildPath = path.join(__dirname, 'public');
     app.use(express.static(buildPath));
     // serve the client index.html file for all requests
     app.get('*', (req, res) => {
