@@ -37,7 +37,7 @@ const generatePos = () => {
 const getVenues = async () => {
   picked = []
   const location = $input.val()
-  const urlToFetch = `${baseUrl}${location}`;
+  const urlToFetch = `${baseUrl}/attractions/${location}`;
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
@@ -65,7 +65,7 @@ const getVenues = async () => {
 const getForecast = async () => {
   const location = $input.val()
   
-  const urlToFetch = `${baseUrl}${location}`;
+  const urlToFetch = `${baseUrl}/weather/${location}`;
   
   try {
     const response = await fetch(urlToFetch)
