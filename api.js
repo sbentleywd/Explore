@@ -3,13 +3,13 @@ const apiRouter = express.Router();
 const fetch = require('node-fetch');
 
 
-app.param('location', (req, res, next, location) => {
+apiRouter.param('location', (req, res, next, location) => {
     req.location=location;
     next();
 })
 
 
-app.get("api/weather/:location", async (req, res) => {
+apiRouter.get("api/weather/:location", async (req, res) => {
     const openWeatherKey = process.env.OPENWEATHER_KEY;
     const location = req.location
     const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
@@ -23,7 +23,7 @@ app.get("api/weather/:location", async (req, res) => {
     
 });
 
-app.get("api/attractions/:location", async (req, res) => {
+apiRouter.get("api/attractions/:location", async (req, res) => {
     const attractionsUrl = 'https://api.foursquare.com/v2/venues/explore?near=';
     const clientId = process.env.FOURSQUARE_CLIENT_ID
     const clientSecret = process.env.FOURSQUARE_CLIENT_SECRET
