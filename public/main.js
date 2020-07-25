@@ -8,7 +8,7 @@ const $weatherDiv = $("#weather1");
 const $mapsDiv = $("#map1");
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var numVenues = 0
-
+const baseUrl = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3001/api'
 
 
 // Random number functions
@@ -37,7 +37,7 @@ const generatePos = () => {
 const getVenues = async () => {
   picked = []
   const location = $input.val()
-  const urlToFetch = `http://localhost:3001/attractions/${location}`;
+  const urlToFetch = `${baseUrl}${location}`;
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
@@ -65,7 +65,7 @@ const getVenues = async () => {
 const getForecast = async () => {
   const location = $input.val()
   
-  const urlToFetch = `http://localhost:3001/weather/${location}`;
+  const urlToFetch = `${baseUrl}${location}`;
   
   try {
     const response = await fetch(urlToFetch)
