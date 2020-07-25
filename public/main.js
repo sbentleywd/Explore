@@ -8,7 +8,7 @@ const $weatherDiv = $("#weather1");
 const $mapsDiv = $("#map1");
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var numVenues = 0
-const baseUrl = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3001/api'
+const baseUrl = '/api' //'http://localhost:3001/api'
 
 
 // Random number functions
