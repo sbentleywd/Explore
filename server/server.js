@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static());
     // serve the client index.html file for all requests
     app.get('*', (req, res) => {
-    res.sendFile('index.html');
+    res.sendFile('/', 'index.html');
     });
     
 }
