@@ -19,7 +19,7 @@ app.use(cors({
 app.use(errorhandler());
 
 if (process.env.NODE_ENV === 'production') {
-    const buildPath = path.join(__dirname, '..', 'build');
+    const buildPath = path.join(__dirname);
     app.use(express.static(buildPath));
     // serve the client index.html file for all requests
     app.get('*', (req, res) => {
