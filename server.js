@@ -20,17 +20,9 @@ app.use(errorhandler());
 
 
 
-/*
-if (process.env.NODE_ENV === 'production') {
-    const buildPath = path.join(__dirname);
-    app.use(express.static());
-    // serve the client index.html file for all requests
-    app.get('*', (req, res) => {
-    res.sendFile('/index.html');
-    });
-    
-}
-*/
+
+
+
 app.param('location', (req, res, next, location) => {
     req.location=location;
     next();
@@ -72,7 +64,15 @@ app.get("/attractions/:location", async (req, res) => {
     // res.send("Getting attractions")
 });
 
-
+if (process.env.NODE_ENV === 'production') {
+    const buildPath = path.join(__dirname, '..', 'public');
+    app.use(express.static(buildPath));
+    // serve the client index.html file for all requests
+    app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+    });
+    
+}
 
 
 app.listen(port, () => {
