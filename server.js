@@ -31,6 +31,12 @@ if (process.env.NODE_ENV === 'production') {
     
 }
 
+const buildPath = path.join(__dirname, 'public');
+app.use(express.static(buildPath));
+// serve the client index.html file for all requests
+app.get('/', (req, res) => {
+res.sendFile(path.join(buildPath, 'index.html'));
+});
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}!`);
