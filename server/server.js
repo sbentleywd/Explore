@@ -20,7 +20,7 @@ app.use(errorhandler());
 
 if (process.env.NODE_ENV === 'production') {
     const buildPath = path.join(__dirname);
-    app.use(express.static());
+    app.use(express.static(__dirname));
     // serve the client index.html file for all requests
     app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
