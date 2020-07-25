@@ -14,7 +14,8 @@
     "whatwg-fetch": "^3.2.0"
   },
   "engines": {
-    "node": "12.16.1"
+    "node": "12.16.1",
+    "npm": "6.13.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
