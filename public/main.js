@@ -115,3 +115,10 @@ const executeSearch = () => {
 }
 
 $submit.click(executeSearch)
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
