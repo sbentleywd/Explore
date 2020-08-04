@@ -30,52 +30,30 @@
             <span class="attribution">Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
           </div>
         </main>
-        
-          {{ message }}
-        
-        <div class="container">
-          <div id="destination">
 
+        <div id="destination">
+          <h2>{{ forecast.name }}</h2>
+        </div>
+
+        <div class="container" v-if="venues">
+          
+          <div id="weather">
+            <h3 class="sectiontitle">CURRENT WEATHER</h3>
+            <h2>Temperature: {{celciusTemp}}&deg;C</h2>
+            <h2>Condition: {{forecast.weather[0].description}}</h2>
+            <h2>Wind Speed: {{forecast.wind.speed}}</h2>
+            <img class="weathericon" v-bind:src="weatherIconUrl">
+            
           </div>
-          <div class="sectiontitle">
-            <h2>CURRENT WEATHER</h2>
+          
+          <div id="venues">
+              <h3 class="sectiontitle">TOP ATTRACTIONS</h3>
           </div>
-          <section id="weather">
-              <div class="weather" id="weather1">
-              </div>
-          </section>
-          <div class="sectiontitle">
-            <h2>TOP ATTRACTIONS</h2>
+          
+          <div id="map">
+            <h3 class="sectiontitle">MAP</h3>  
           </div>
-          <section id="venues">
-            <div class="venue" id="venue1">
-
-            </div>
-            <div class="venue" id="venue2">
-
-            </div>
-            <div class="venue" id="venue3">
-
-            </div>
-            <div class="venue" id="venue4">
-
-            </div>
-            <div class="venue" id="venue5">
-              
-            </div> 
-            <div class="venue" id="venue6">
-
-            </div>
-          </section>
-          <div class="sectiontitle">
-            <h2>MAPS</h2>
-          </div>
-          <section id="map">
-              <div class="map" id="map1">
-              </div>
-          </section>
-          <footer>
-          </footer>
+          
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
