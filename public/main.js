@@ -11,6 +11,69 @@ var numVenues = 0
 const baseUrl = '/api' //'http://localhost:3001/api'
 
 
+// Vue instance
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    city: '',
+    forecast: {},
+    venues: {}
+  },
+  methods: {
+    search: function() {
+      console.log(`searching for ${this.city}`)
+      $venueDivs.forEach(venue => venue.empty());
+      $weatherDiv.empty();
+      $destination.empty();
+      $container.css("visibility", "visible");
+      this.getVenues()
+      this.getForecast()
+      
+    },
+    getVenues: async function() {
+      console.log('getting venues');
+      picked = []
+      const location = this.city
+      const urlToFetch = `${baseUrl}/attractions/${location}`;
+      try {
+        const response = await fetch(urlToFetch);
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          const venues = jsonResponse.response.groups[0].items.map(item => item.venue);
+          
+          this.venues = venues;
+        }
+        
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+    },
+    getForecast: async function () {
+      console.log('getting forecast')
+      const location = this.city
+  
+      const urlToFetch = `${baseUrl}/weather/${location}`;
+      
+      try {
+        const response = await fetch(urlToFetch)
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          
+          this.forecast = jsonResponse;
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+})
+
+
+
 // Random number functions
 
 randNums = []
@@ -34,6 +97,8 @@ const generatePos = () => {
 
 
 // AJAX functions
+/*
+
 const getVenues = async () => {
   picked = []
   const location = $input.val()
@@ -75,7 +140,9 @@ const getForecast = async () => {
   } catch (error) {
     console.log(error)
   }
-};
+}; 
+
+*/
 
 // Render functions
 const renderVenues = (venues) => {
@@ -104,6 +171,7 @@ const renderMaps = (location) => {
 */
 
 const executeSearch = () => {
+  
   $venueDivs.forEach(venue => venue.empty());
   $weatherDiv.empty();
   $destination.empty();
@@ -114,11 +182,5 @@ const executeSearch = () => {
   return false;
 }
 
-$submit.click(executeSearch)
+// $submit.click(executeSearch)
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-})

@@ -13,63 +13,70 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
   </head>
+
+  <!-- <span>Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> -->
   <body>
-    <header>
-      <img class="logo" src="logo.svg" alt="logo" />
-    </header>
-    <main>
-      <h1>Where do you want to go today?</h1>
-      <form autocomplete="off">
-        <input type="text" id="city">
-        <button id="button" type="submit">Submit</button>
-      </form>
-    </main>
-    <div id="app">
-      {{ message }}
-    </div>
-    <div class="container">
-      <div id="destination">
-
-      </div>
-      <div class="sectiontitle">
-        <h2>CURRENT WEATHER</h2>
-      </div>
-      <section id="weather">
-          <div class="weather" id="weather1">
-          </div>
-      </section>
-      <div class="sectiontitle">
-        <h2>TOP ATTRACTIONS</h2>
-      </div>
-      <section id="venues">
-        <div class="venue" id="venue1">
-
-        </div>
-        <div class="venue" id="venue2">
-
-        </div>
-        <div class="venue" id="venue3">
-
-        </div>
-        <div class="venue" id="venue4">
-
-        </div>
-        <div class="venue" id="venue5">
+      <div id="app">
+        <header>
           
-        </div> 
-        <div class="venue" id="venue6">
-
-        </div>
-      </section>
-      <div class="sectiontitle">
-        <h2>MAPS</h2>
-      </div>
-      <section id="map">
-          <div class="map" id="map1">
+        </header>
+        <main>
+          <div class="search">
+            <h1>Where do you want to go today?</h1>
+            <form autocomplete="off" @submit.prevent="search">
+              <input v-model='city' type="text" id="city">
+              <button id="button" type="submit">Submit</button>
+            </form>
+            <span class="attribution">Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
           </div>
-      </section>
-      <footer>
-      </footer>
+        </main>
+        
+          {{ message }}
+        
+        <div class="container">
+          <div id="destination">
+
+          </div>
+          <div class="sectiontitle">
+            <h2>CURRENT WEATHER</h2>
+          </div>
+          <section id="weather">
+              <div class="weather" id="weather1">
+              </div>
+          </section>
+          <div class="sectiontitle">
+            <h2>TOP ATTRACTIONS</h2>
+          </div>
+          <section id="venues">
+            <div class="venue" id="venue1">
+
+            </div>
+            <div class="venue" id="venue2">
+
+            </div>
+            <div class="venue" id="venue3">
+
+            </div>
+            <div class="venue" id="venue4">
+
+            </div>
+            <div class="venue" id="venue5">
+              
+            </div> 
+            <div class="venue" id="venue6">
+
+            </div>
+          </section>
+          <div class="sectiontitle">
+            <h2>MAPS</h2>
+          </div>
+          <section id="map">
+              <div class="map" id="map1">
+              </div>
+          </section>
+          <footer>
+          </footer>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="helpers.js"></script>
