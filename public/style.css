@@ -1,24 +1,87 @@
-.logo {
-  padding: 10px;
-}
+/* Banner & search bar*/
 
 main {
   margin: 0px auto 50px auto;
   text-align: center;
-  background-image: url('background_photo_desktop.jpg');
+  background-image: url('skyline.jpg');
   background-size: cover;
-  text-align: center;
+  background-position: center;
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 22em;
+  position: relative;
+}
+
+#city {
+  width: 286px;
+  height: 46px;
+  border-radius: 4px;
+  border: solid 2.5px #ffffff;
+  background-color: #ffffff;
+  opacity: 0.73;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.4px;
+  text-align: left;
+  color: #4a4a4a;
+  box-sizing: border-box;
+}
+
+input:focus, #button:focus {
+  outline:none
+}
+
+#button {
+  width: 140px;
+  height: 46px;
+  border-radius: 4px;
+  background-color: #27b7c1;
+  border: solid 2.5px #27b7c1;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #ffffff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.attribution {
+  font-family: Montserrat;
+  color: #ffffff;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.attribution a {
+  color: red;
+}
+
+form {
+  height: 100px;
+}
+
+/* General styles */
+
 h1 {
-  padding-top: 150px;
+  
   font-family: Montserrat;
   font-size: 64px;
   font-weight: 300;
   letter-spacing: 1.1px;
   text-align: center;
   color: #ffffff;
-  margin: auto;
+  margin-bottom: 0.5em;
 }
 
 h3 {
@@ -40,80 +103,18 @@ p {
   padding-left: 5px;
 }
 
-form {
-  margin-top: 50px;
-  height: 100px;
-}
+/* Content */
 
-footer {
-  display: flex;
-  align-items: center;
-  height: 50px;
-}
-
-.weather h2 {
-  position: relative;
-  padding: 5px;
-}
-
-.map h2 {
-  position: relative;
-  padding: 5px;
+[v-cloak].container {
+  display: none;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 90vw;
   margin: auto;
-  visibility: hidden;
-}
-
-.weather h2 {
-  font-family: Montserrat;
-  font-size: 18px;
-  line-height: 0.78;
-  text-align: left;
-  color: #4a4a4a;
-}
-
-.map h2 {
-  font-family: Montserrat;
-  font-size: 18px;
-  line-height: 0.78;
-  text-align: left;
-  color: #4a4a4a;
-}
-
-.weather {
-  width: 200px;
-  height: 260px;
-  padding: 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-
-
-.weathericon {
-  width: 150px;
-  height: 150px;
-}
-
-.venue {
-  width: 275px;
-  padding: 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-.venueimage {
-  margin-top: 20px;
-}
-
-#venues h2 {
-  font-family: Work Sans;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 0.77;
-  text-align: center;
-  padding-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5em;
 }
 
 #destination {
@@ -123,70 +124,120 @@ footer {
   letter-spacing: 0.9px;
   text-align: left;
   color: #27b7c1;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
 }
 
-.sectiontitle {
-  width: 300px;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+#weather {
+  width: 200px;
+  height: 260px;
+  padding: 20px;
+  
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-height: 150px;
 }
 
-.sectiontitle h2 {
+#weather, #venues, #restaurants {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+#weather h2 {
   font-family: Montserrat;
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 3.4px;
+  font-size: 18px;
+  line-height: 0.78;
   text-align: left;
   color: #4a4a4a;
+  position: relative;
+  padding: 5px;
+  margin-bottom: 0.4em;
+}
+
+.weathericon {
+  width: 150px;
+  height: 150px;
+}
+
+.venue {
+  width: 275px;
+  padding: 20px;
+  
+  
+  display: flex;
+}
+
+.venueimage {
+  
+  right: 10px;
+  height: 50px;
+  width: 50px;
+  
+}
+
+#venues h2 {
+  font-family: Montserrat;
+  font-size: 18px;
+  line-height: 0.78;
+  text-align: left;
+  color: #4a4a4a;
+  line-height: initial;
+  
+  padding: 5px;
+  width: 80%;
+  display: inline;
 }
 
 #venues {
   display: flex;
   justify-content: space-around;
   min-height: 250px;
+  padding: 20px;
+  flex-direction: column;
 }
 
-#weather {
+.restaurant {
+  width: 275px;
+  padding: 20px;
+  
+  
   display: flex;
-  justify-content: space-around;
-  min-height: 150px;
 }
 
-#map {
-  display: flex;
-  justify-content: space-around;
-  min-height: 150px;
-}
 
-#city {
-  width: 286px;
-  height: 46px;
-  border-radius: 4px;
-  border: solid 2.5px #ffffff;
-  background-color: inherit;
-  opacity: 0.73;
-  font-family: Source Sans Pro;
+
+#restaurants h2 {
+  font-family: Montserrat;
   font-size: 18px;
-  line-height: 1;
-  letter-spacing: 0.4px;
+  line-height: 0.78;
   text-align: left;
-  color: #ffffff;
+  color: #4a4a4a;
+  line-height: initial;
+  
+  padding: 5px;
+  width: 80%;
+  display: inline;
 }
 
-#button {
-  width: 140px;
-  height: 46px;
-  border-radius: 4px;
-  background-color: #27b7c1;
-  font-family: Source Sans Pro;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: 0.5px;
-  text-align: center;
-  color: #ffffff;
+#restaurants {
+  display: flex;
+  justify-content: space-around;
+  min-height: 250px;
+  padding: 20px;
+  flex-direction: column;
 }
+
+h3.sectiontitle {
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 3.4px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 1em;
+}
+
 
 @media (max-width: 860px) {
   main {
@@ -201,24 +252,6 @@ footer {
   form {
     margin-top: 30px;
     padding-bottom: 10px;
-  }
-
-  #venues, #weather, #map {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .venue, .weather, .map {
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-  }
-
-  .weather {
-    padding: 10px 20px;
-    height: 100%;
   }
 
   .sectiontitle, .sectiontitle h2, #destination {

@@ -7,65 +7,65 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Work+Sans" rel="stylesheet">
-    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
   </head>
+
+  
   <body>
-    <header>
-      <img class="logo" src="logo.svg" alt="logo" />
-    </header>
-    <main>
-      <h1>Where do you want to go today?</h1>
-      <form autocomplete="off">
-        <input type="text" id="city">
-        <button id="button" type="submit">Submit</button>
-      </form>
-    </main>
-    <div class="container">
-      <div id="destination">
-
-      </div>
-      <div class="sectiontitle">
-        <h2>CURRENT WEATHER</h2>
-      </div>
-      <section id="weather">
-          <div class="weather" id="weather1">
+      <div id="app">
+        <header>
+          
+        </header>
+        <main>
+          <div class="search">
+            <h1>Where do you want to go today?</h1>
+            <form autocomplete="off" @submit.prevent="search">
+              <input v-model='city' type="text" id="city">
+              <button id="button" type="submit">Submit</button>
+            </form>
+            <span class="attribution">Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
           </div>
-      </section>
-      <div class="sectiontitle">
-        <h2>TOP ATTRACTIONS</h2>
-      </div>
-      <section id="venues">
-        <div class="venue" id="venue1">
+        </main>
 
+        <div id="destination">
+          <h2>{{ forecast.name }}</h2>
         </div>
-        <div class="venue" id="venue2">
 
-        </div>
-        <div class="venue" id="venue3">
-
-        </div>
-        <div class="venue" id="venue4">
-
-        </div>
-        <div class="venue" id="venue5">
-
-        </div>
-        <div class="venue" id="venue6">
-
-        </div>
-      </section>
-      <div class="sectiontitle">
-        <h2>MAPS</h2>
-      </div>
-      <section id="map">
-          <div class="map" id="map1">
+        <div class="container" v-if="venues">
+          
+          <div id="weather">
+            <h3 class="sectiontitle">CURRENT WEATHER</h3>
+            <h2>Temperature: {{celciusTemp}}&deg;C</h2>
+            <h2>Condition: {{forecast.weather[0].description}}</h2>
+            <h2>Wind Speed: {{forecast.wind.speed}}</h2>
+            <img class="weathericon" v-bind:src="weatherIconUrl">
+            
           </div>
-      </section>
-      <footer>
-      </footer>
+          
+          <div id="venues">
+              <h3 class="sectiontitle">TOP ATTRACTIONS</h3>
+              <div v-for="(venue, index) in venues" class="venue">
+               <h2>{{ venue.name }}</h2>
+               <img class="venueimage" :src="venueIconUrls[index]"/>
+              </div>
+          </div>
+          
+          <div id="restaurants">
+            <h3 class="sectiontitle">TOP RESTAURANTS</h3>
+            <div v-for="(restaurant, index) in restaurants" class="restaurant">
+              <h2>{{ restaurant.restaurant.name }}</h2>
+              
+             </div>
+          </div>
+          
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="helpers.js"></script>
+    
     <script src="main.js"></script>
   </body>
 </html>
