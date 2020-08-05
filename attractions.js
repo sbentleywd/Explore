@@ -8,7 +8,7 @@ attractionsRouter.param('location', (req, res, next, location) => {
 })
 
 attractionsRouter.get("/:location", async (req, res) => {
-    console.log('attractions')
+    
     const attractionsUrl = 'https://api.foursquare.com/v2/venues/explore?near=';
     const clientId = process.env.FOURSQUARE_CLIENT_ID
     const clientSecret = process.env.FOURSQUARE_CLIENT_SECRET

@@ -129,23 +129,6 @@ p {
   margin-bottom: 1em;
 }
 
-.map h2 {
-  font-family: Montserrat;
-  font-size: 18px;
-  line-height: 0.78;
-  text-align: left;
-  color: #4a4a4a;
-  position: relative;
-  padding: 5px;
-}
-
-#map {
-  display: flex;
-  justify-content: space-around;
-  min-height: 150px;
-  padding: 20px;
-}
-
 #weather {
   width: 200px;
   height: 260px;
@@ -157,7 +140,7 @@ p {
   min-height: 150px;
 }
 
-#weather, #venues, #map {
+#weather, #venues, #restaurants {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -180,11 +163,17 @@ p {
 .venue {
   width: 275px;
   padding: 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  
+  
+  display: flex;
 }
 
 .venueimage {
-  margin-top: 20px;
+  
+  right: 10px;
+  height: 50px;
+  width: 50px;
+  
 }
 
 #venues h2 {
@@ -193,8 +182,11 @@ p {
   line-height: 0.78;
   text-align: left;
   color: #4a4a4a;
-  position: relative;
+  line-height: initial;
+  
   padding: 5px;
+  width: 80%;
+  display: inline;
 }
 
 #venues {
@@ -202,6 +194,38 @@ p {
   justify-content: space-around;
   min-height: 250px;
   padding: 20px;
+  flex-direction: column;
+}
+
+.restaurant {
+  width: 275px;
+  padding: 20px;
+  
+  
+  display: flex;
+}
+
+
+
+#restaurants h2 {
+  font-family: Montserrat;
+  font-size: 18px;
+  line-height: 0.78;
+  text-align: left;
+  color: #4a4a4a;
+  line-height: initial;
+  
+  padding: 5px;
+  width: 80%;
+  display: inline;
+}
+
+#restaurants {
+  display: flex;
+  justify-content: space-around;
+  min-height: 250px;
+  padding: 20px;
+  flex-direction: column;
 }
 
 h3.sectiontitle {

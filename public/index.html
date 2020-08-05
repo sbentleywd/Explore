@@ -14,7 +14,7 @@
 
   </head>
 
-  <!-- <span>Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> -->
+  
   <body>
       <div id="app">
         <header>
@@ -48,16 +48,24 @@
           
           <div id="venues">
               <h3 class="sectiontitle">TOP ATTRACTIONS</h3>
+              <div v-for="(venue, index) in venues" class="venue">
+               <h2>{{ venue.name }}</h2>
+               <img class="venueimage" :src="venueIconUrls[index]"/>
+              </div>
           </div>
           
-          <div id="map">
-            <h3 class="sectiontitle">MAP</h3>  
+          <div id="restaurants">
+            <h3 class="sectiontitle">TOP RESTAURANTS</h3>
+            <div v-for="(restaurant, index) in restaurants" class="restaurant">
+              <h2>{{ restaurant.restaurant.name }}</h2>
+              
+             </div>
           </div>
           
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="helpers.js"></script>
+    
     <script src="main.js"></script>
   </body>
 </html>
