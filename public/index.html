@@ -31,34 +31,34 @@
           </div>
         </main>
 
-        <div id="destination">
+        <div id="destination" v-if="loaded">
           <h2>{{ forecast.name }}</h2>
         </div>
 
-        <div class="container" v-if="venues">
+        <div class="container" v-if="loaded">
           
           <div id="weather">
-            <h3 class="sectiontitle">CURRENT WEATHER</h3>
-            <h2>Temperature: {{celciusTemp}}&deg;C</h2>
-            <h2>Condition: {{forecast.weather[0].description}}</h2>
-            <h2>Wind Speed: {{forecast.wind.speed}}</h2>
+            <h2 class="sectiontitle">CURRENT WEATHER</h2>
+            <h3>Temperature: {{celciusTemp}}&deg;C</h3>
+            <h3>Condition: {{forecast.weather[0].description}}</h3>
+            <h3>Wind Speed: {{forecast.wind.speed}}</h3>
             <img class="weathericon" v-bind:src="weatherIconUrl">
             
           </div>
           
           <div id="venues">
-              <h3 class="sectiontitle">TOP ATTRACTIONS</h3>
+              <h2 class="sectiontitle">TOP ATTRACTIONS</h2>
               <div v-for="(venue, index) in venues" class="venue">
-               <h2>{{ venue.name }}</h2>
+               <h3>{{ venue.name }}</h3>
                <img class="venueimage" :src="venueIconUrls[index]"/>
               </div>
           </div>
           
           <div id="restaurants">
-            <h3 class="sectiontitle">TOP RESTAURANTS</h3>
+            <h2 class="sectiontitle">TOP RESTAURANTS</h2>
             <div v-for="(restaurant, index) in restaurants" class="restaurant">
-              <h2>{{ restaurant.restaurant.name }}</h2>
-              
+              <a :href=restaurant.url><h3>{{ restaurant.name }}</h3></a>
+              <h3 class="price">{{ restaurant.price }}</h3>
              </div>
           </div>
           

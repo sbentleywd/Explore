@@ -13,7 +13,7 @@ attractionsRouter.get("/:location", async (req, res) => {
     const clientId = process.env.FOURSQUARE_CLIENT_ID
     const clientSecret = process.env.FOURSQUARE_CLIENT_SECRET
     const location = req.location
-    const urlToFetch = `${attractionsUrl}${location}&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20200409`
+    const urlToFetch = `${attractionsUrl}${location}&limit=50&client_id=${clientId}&client_secret=${clientSecret}&v=20200409&sortByPopularity=1`
     
     const response = await fetch(urlToFetch)
     if(response.ok) {
