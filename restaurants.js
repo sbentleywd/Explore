@@ -4,35 +4,19 @@ const fetch = require('node-fetch');
 
 restaurantsRouter.param('location', async (req, res, next, location) => {
     
-    const userKey = process.env.ZOMATO_KEY    
-    const locationsUrl = `https://developers.zomato.com/api/v2.1/locations?query=${location}`
-    
-    const fetchOptions = {
-        headers: {
-        'user-key': `${userKey}`,
-        'Accept': 'application/json'
-        }
-    }
-    
-    const response = await fetch(locationsUrl, fetchOptions)
-    if(response.ok) {
-        const jsonResponse = await response.json();
-        console.log(jsonResponse.location_suggestions)
-        req.locationId = jsonResponse.location_suggestions[0].city_id        
-    }
+    req.location = location;
     next();
 })
 
 restaurantsRouter.get("/:location", async (req, res) => {
-    const locationId = req.locationId
-    const userKey = process.env.ZOMATO_KEY    
+    const location = req.location
+    const apiKey = process.env.YELP_KEY    
     const fetchOptions = {
         headers: {
-        'user-key': `${userKey}`,
-        'Accept': 'application/json'
+        'Authorization': `Bearer ${apiKey}`        
         }
     }
-    const restaurantsUrl = `https://developers.zomato.com/api/v2.1/search?entity_id=${locationId}&entity_type=city&count=10&sort=rating`;
+    const restaurantsUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${location}&sort_by=rating`;
     const response = await fetch(restaurantsUrl, fetchOptions)
     if(response.ok) {
         const jsonResponse = await response.json();

@@ -84,14 +84,7 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-h3 {
-  font-family: Work Sans;
-  font-weight: 500;
-  line-height: 1.29;
-  color: #27c19e;
-  padding-left: 5px
-  
-}
+
 
 p {
   font-family: Work Sans;
@@ -144,7 +137,7 @@ p {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-#weather h2 {
+#weather h3 {
   font-family: Montserrat;
   font-size: 18px;
   line-height: 0.78;
@@ -162,10 +155,10 @@ p {
 
 .venue {
   width: 275px;
-  padding: 20px;
-  
-  
+  padding: 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .venueimage {
@@ -176,16 +169,16 @@ p {
   
 }
 
-#venues h2 {
+#venues h3 {
   font-family: Montserrat;
   font-size: 18px;
   line-height: 0.78;
   text-align: left;
-  color: #4a4a4a;
+  color: #27c19e;
   line-height: initial;
   
   padding: 5px;
-  width: 80%;
+  
   display: inline;
 }
 
@@ -199,24 +192,30 @@ p {
 
 .restaurant {
   width: 275px;
-  padding: 20px;
-  
-  
+  padding: 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.restaurant a {
+  text-decoration: none;
+}
 
+.price {
+  white-space: nowrap;
+}
 
-#restaurants h2 {
+#restaurants h3 {
   font-family: Montserrat;
   font-size: 18px;
   line-height: 0.78;
   text-align: left;
-  color: #4a4a4a;
+  color: #27c19e;
   line-height: initial;
   
   padding: 5px;
-  width: 80%;
+  
   display: inline;
 }
 
@@ -228,7 +227,7 @@ p {
   flex-direction: column;
 }
 
-h3.sectiontitle {
+h2.sectiontitle {
   font-family: Montserrat;
   font-size: 22px;
   font-weight: 300;
