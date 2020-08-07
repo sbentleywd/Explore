@@ -11,7 +11,26 @@ const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 var numVenues = 0
 const baseUrl = '/api'
 
+Vue.component('flight-widget', {
+  template: `<div
+                data-skyscanner-widget="SearchWidget"
+                data-locale="en-GB"
+                data-market="GB"
+                data-currency="GBP"
+                data-origin-geo-lookup="true"
+                data-flight-type="return"
+                data-responsive="false"
+                data-destination-name="'London'"
+              ></div>`,
+  mounted() {
+    
+    let newScript= document.createElement('script')
+    newScript.setAttribute('src', 'https://widgets.skyscanner.net/widget-server/js/loader.js')
+    document.head.appendChild(newScript)
+    
+  }
 
+})
 
 // Vue instance
 
@@ -58,7 +77,6 @@ var app = new Vue({
         if (response.ok) {
           const jsonResponse = await response.json();
           const venues = jsonResponse.response.groups[0].items.map(item => item.venue);
-          console.log(venues)
           let newVenues = []
           let parks = 0
           
@@ -97,7 +115,6 @@ var app = new Vue({
         const response = await fetch(urlToFetch)
         if (response.ok) {
           const jsonResponse = await response.json();
-          console.log(jsonResponse);
           this.forecast = jsonResponse;
         }
       } catch (error) {
@@ -111,7 +128,6 @@ var app = new Vue({
         const response = await fetch(urlToFetch);
         if (response.ok) {
           const jsonResponse = await response.json();
-          console.log(jsonResponse)
           this.restaurants = jsonResponse.businesses;
         }
       } catch (error) {
