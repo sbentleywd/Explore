@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Explore</title>
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -39,8 +40,52 @@
         </div>
 
         <div class="container" v-if="loaded">
+                   
+          <div id="venues" class="content-box">
+              <h2 class="sectiontitle">TOP ATTRACTIONS</h2>
+              <div v-for="(venue, index) in venues" class="venue">
+               <h3>{{ venue.name }}</h3>
+               <img class="venueimage" :src="venueIconUrls[index]"/>
+              </div>
+          </div>
           
-          <div id="weather">
+          <div id="restaurants" class="content-box">
+            <h2 class="sectiontitle">TOP RESTAURANTS</h2>
+            <div v-for="(restaurant, index) in restaurants" class="restaurant">
+              <a :href=restaurant.url><h3>{{ restaurant.name }}</h3></a>
+              <h3 class="price">{{ restaurant.price }}</h3>
+             </div>
+          </div>
+          
+          <div id="flights" class="content-box">
+            <h2 class="sectiontitle">TYPICAL FLIGHTS</h2>
+            <div class="flight" v-for="(quote, index) in flights.Quotes">
+              <div class="flight-details">
+                <div class="outbound">
+                  <h3>
+                    {{ quote.OutboundLeg.DepartureDate.slice(8,10) }} /
+                    {{ quote.OutboundLeg.DepartureDate.slice(5,7) }} /
+                    {{ quote.OutboundLeg.DepartureDate.slice(0,4) }}, 
+                    {{ flights.Carriers.find(carrier => carrier.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name }}
+                  </h3>
+                  
+                  
+                </div>
+                <div class="inbound">
+                  <h3>
+                    {{ quote.InboundLeg.DepartureDate.slice(8,10) }} /
+                    {{ quote.InboundLeg.DepartureDate.slice(5,7) }} /
+                    {{ quote.InboundLeg.DepartureDate.slice(0,4) }}, 
+                    {{ flights.Carriers.find(carrier => carrier.CarrierId === quote.InboundLeg.CarrierIds[0]).Name }}
+                  </h3>
+                </div>
+              </div>
+              <h3>{{ flights.Currencies[0].Symbol }}{{ quote.MinPrice }}</h3>
+
+            </div>
+          </div>
+          
+          <div id="weather" class="content-box">
             <h2 class="sectiontitle">CURRENT WEATHER</h2>
             <h3>Temperature: {{celciusTemp}}&deg;C</h3>
             <h3>Condition: {{forecast.weather[0].description}}</h3>
@@ -49,31 +94,10 @@
             
           </div>
           
-          <div id="venues">
-              <h2 class="sectiontitle">TOP ATTRACTIONS</h2>
-              <div v-for="(venue, index) in venues" class="venue">
-               <h3>{{ venue.name }}</h3>
-               <img class="venueimage" :src="venueIconUrls[index]"/>
-              </div>
-          </div>
-          
-          <div id="restaurants">
-            <h2 class="sectiontitle">TOP RESTAURANTS</h2>
-            <div v-for="(restaurant, index) in restaurants" class="restaurant">
-              <a :href=restaurant.url><h3>{{ restaurant.name }}</h3></a>
-              <h3 class="price">{{ restaurant.price }}</h3>
-             </div>
-          </div>
-          
-          <div id="flights">
-            <flight-widget></flight-widget>
-          </div>
-          
-          
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script> -->
+    
     <script src="main.js"></script>
   </body>
 </html>

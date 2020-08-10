@@ -108,6 +108,8 @@ p {
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 5em;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 #destination {
@@ -120,32 +122,6 @@ p {
   width: 100%;
   text-align: center;
   margin-bottom: 1em;
-}
-
-#weather {
-  width: 200px;
-  height: 260px;
-  padding: 20px;
-  
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  min-height: 150px;
-}
-
-#weather, #venues, #restaurants {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-#weather h3 {
-  font-family: Montserrat;
-  font-size: 18px;
-  line-height: 0.78;
-  text-align: left;
-  color: #4a4a4a;
-  position: relative;
-  padding: 5px;
-  margin-bottom: 0.4em;
 }
 
 .weathericon {
@@ -169,7 +145,23 @@ p {
   
 }
 
-#venues h3 {
+.content-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 250px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 0px 20px 20px 20px;
+  flex-direction: column;
+  width: 300px;
+  min-width: 300px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  margin: 20px 20px;
+}
+
+.content-box h3 {
   font-family: Montserrat;
   font-size: 18px;
   line-height: 0.78;
@@ -177,18 +169,14 @@ p {
   color: #27c19e;
   line-height: initial;
   
-  padding: 5px;
-  
   display: inline;
+  
 }
 
-#venues {
-  display: flex;
-  justify-content: space-around;
-  min-height: 250px;
-  padding: 20px;
-  flex-direction: column;
+.content-box a {
+  color: #27c19e;
 }
+
 
 .restaurant {
   width: 275px;
@@ -206,30 +194,26 @@ p {
   white-space: nowrap;
 }
 
-#restaurants h3 {
-  font-family: Montserrat;
-  font-size: 18px;
-  line-height: 0.78;
-  text-align: left;
-  color: #27c19e;
-  line-height: initial;
-  
-  padding: 5px;
-  
-  display: inline;
-}
 
-#restaurants {
+.flight {
+  width: 275px;
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
-  min-height: 250px;
-  padding: 20px;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#flights {
+.flight-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+}
+
+.inbound, .outbound {
+  display: inline-block;
   
-  
+
 }
 
 h2.sectiontitle {
@@ -240,12 +224,18 @@ h2.sectiontitle {
   text-align: left;
   color: #4a4a4a;
   margin-bottom: 1em;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
+  padding: 20px 0px 10px 0px;
 }
 
 
-@media (max-width: 860px) {
+@media only screen and (max-width: 450px) {
   main {
-    background-image: url('background_photo_moble.jpg');
+    background-image: url('skyline.jpg');
   }
 
   h1 {
@@ -262,4 +252,33 @@ h2.sectiontitle {
     margin: auto;
     text-align: center;
   }
+
+  .content-box {
+    
+    width: 100%;
+    
+  }
+}
+
+/* Scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
