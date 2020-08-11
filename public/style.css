@@ -235,17 +235,21 @@ h2.sectiontitle {
 
 @media only screen and (max-width: 450px) {
   main {
-    background-image: url('skyline.jpg');
+    background-image: url('skyline_mobile.jpg');
   }
 
   h1 {
-    padding-top: 80px;
+    padding-top: 50px;
     font-size: 32px;
   }
 
   form {
-    margin-top: 30px;
+    margin-top: 20px;
     padding-bottom: 10px;
+  }
+
+  #city {
+    margin-bottom: 10px;
   }
 
   .sectiontitle, .sectiontitle h2, #destination {
