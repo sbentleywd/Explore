@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Work+Sans" rel="stylesheet">
     <!-- development version, includes helpful console warnings -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- production version, optimized for size and speed -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     
 
   </head>
@@ -28,7 +28,15 @@
           <div class="search">
             <h1>Where do you want to go today?</h1>
             <form autocomplete="off" @submit.prevent="search">
-              <input v-model='city' type="text" id="city">
+              <div class="input-container">
+                <div><h2>To: </h2></div>
+                <input v-model='city' type="text" id="city">
+              </div>
+              <div class="input-container">
+                <div><h2>From: </h2></div>
+                <input v-model='from' type="text" id="from">
+              </div>
+              
               <button id="button" type="submit">Submit</button>
             </form>
             <span class="attribution">Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
