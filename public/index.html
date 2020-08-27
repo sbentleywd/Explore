@@ -101,6 +101,16 @@
             <img class="weathericon" v-bind:src="weatherIconUrl">
             
           </div>
+
+          <div id="images" class="content-box-large">
+            <h2 class="sectiontitle">Images</h2>
+            <div class="images-container">
+              <div class="destination-image-container" v-for="(image, index) in images">
+                <img class="destination-image" :src="imageUrls[index].imageUrl" :alt="imageUrls[index].alt">
+                <span class="attribution">Photo by <a :href="imageUrls[index].userUrl">{{image.user}}</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+              </div>
+            </div>
+          </div>
           
         </div>
     </div>

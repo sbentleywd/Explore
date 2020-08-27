@@ -76,13 +76,17 @@ input:focus, #button:focus {
   font-family: Montserrat;
   color: #ffffff;
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 12px;
+  bottom: 10px;
+  font-size: 80%;
+  background-color: rgba(197, 184, 184, 0.5);
+  border-radius: 10px;
+  padding: 5px;
+  max-width: 80%;
+  
 }
 
-.attribution a {
-  color: red;
-}
+
 
 form {
   height: 100px;
@@ -162,23 +166,49 @@ p {
   
 }
 
-.content-box {
+.content-box, .content-box-large {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   min-height: 250px;
   max-height: 500px;
-  overflow-y: auto;
-  padding: 0px 20px 20px 20px;
-  flex-direction: column;
-  width: 300px;
-  min-width: 300px;
+  align-items: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   border-radius: 6px;
   margin: 20px 20px;
+  flex-direction: column;
+  padding: 0px 20px 20px 20px;
 }
 
-.content-box h3 {
+.content-box {
+  
+  justify-content: flex-start;
+  overflow-y: auto;
+  width: 300px;
+  min-width: 300px;
+}
+
+.content-box-large {
+  width: 100%; 
+}
+
+.destination-image-container {
+  height: 90%;
+  position: relative;
+
+}
+
+.images-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.destination-image-container img {
+  height: 100%;
+  width: auto;
+  margin: 0 10px;
+}
+
+.content-box h3, .content-box-large h3 {
   font-family: Montserrat;
   font-size: 18px;
   line-height: 0.78;
@@ -262,24 +292,38 @@ h2.sectiontitle {
   }
 
   form {
-    margin-top: 10px;
+    margin: 0 20px;
     padding-bottom: 10px;
     height: auto;
   }
 
-  .input-container h2 {
-    
-  }
-
+  
   .sectiontitle, .sectiontitle h2, #destination {
     margin: auto;
     text-align: center;
   }
 
   .content-box {
-    
     width: 100%;
-    
+  }
+
+  .content-box-large {
+    margin: 20px 0px;
+  }
+
+  .images-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .destination-image-container {
+    height: auto;
+  }
+
+  .destination-image-container img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
   }
 }
 
