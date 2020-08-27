@@ -21,9 +21,6 @@
     
 
       <div id="app">
-        <header>
-          
-        </header>
         <main>
           <div class="search">
             <h1>Where do you want to go today?</h1>
@@ -42,7 +39,10 @@
             <span class="attribution">Photo by <a href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Robert Bock</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
           </div>
         </main>
-
+        <div id="loading" v-if="loading">
+          <h2>Loading destination details...</h2>
+          <div id="spinner"></div>
+        </div>
         <div id="destination" v-if="loaded">
           <h2>{{ forecast.name }}</h2>
         </div>
