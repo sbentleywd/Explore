@@ -5,32 +5,12 @@ const $submit = $('#button');
 const $destination = $('#destination');
 const $container = $('.container');
 const $venueDivs = [$("#venue1"), $("#venue2"), $("#venue3"), $("#venue4"), $("#venue5"), $("#venue6")];
-const $weatherDiv = $("#weather1");
-const $mapsDiv = $("#map1");
+
+
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var numVenues = 0
 const baseUrl = '/api'
 
-Vue.component('flight-widget', {
-  template: `<div
-                data-skyscanner-widget="SearchWidget"
-                data-locale="en-GB"
-                data-market="GB"
-                data-currency="GBP"
-                data-origin-geo-lookup="true"
-                data-flight-type="return"
-                data-responsive="false"
-                data-destination-name="'London'"
-              ></div>`,
-  mounted() {
-    
-    let newScript= document.createElement('script')
-    newScript.setAttribute('src', 'https://widgets.skyscanner.net/widget-server/js/loader.js')
-    document.head.appendChild(newScript)
-    
-  }
-
-})
 
 // Vue instance
 
