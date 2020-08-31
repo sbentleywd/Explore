@@ -19,8 +19,13 @@ flightsRouter.param('location', async (req, res, next, value) => {
         const jsonResponse = await response.json();
         req.location = jsonResponse.Places[0].PlaceId
         const today = new Date();
-        const date = today.getFullYear()+'-'+('0'+(today.getMonth()+1)).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
-        req.date = date;
+        let returnDate = new Date();
+        returnDate.setDate(today.getDate() + 4);
+
+        const outboundDateString = today.getFullYear()+'-'+('0'+(today.getMonth()+1)).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
+        req.outboundDate = outboundDateString;
+        const inboundDateString = returnDate.getFullYear()+'-'+('0'+(returnDate.getMonth()+1)).slice(-2)+'-'+('0' + returnDate.getDate()).slice(-2);
+        req.inboundDate = inboundDateString;
     }
 
     next();
@@ -47,11 +52,16 @@ flightsRouter.param('from', async (req, res, next, value) => {
 
 
 flightsRouter.get("/:location/:from", async (req, res) => {
-    const date = req.date
-    
+    const outboundDate = req.outboundDate
+    console.log(outboundDate);
+    const inboundDate = req.inboundDate
+    console.log(inboundDate);
     const location = req.location
-    const from = req.from
-    const flightsUrl = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GB/GBP/en-UK/${from}/${location}/${date}/${date}`;
+    console.log(location);
+
+    const from = req.from;
+    console.log(from);
+    const flightsUrl = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GB/GBP/en-UK/${from}/${location}/${outboundDate}/${inboundDate}`;
     const fetchOptions = {
         headers: {
         'x-rapidapi-host': rapidApiHost,

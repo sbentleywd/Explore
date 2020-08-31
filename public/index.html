@@ -11,7 +11,7 @@
     <!-- development version, includes helpful console warnings -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <!-- production version, optimized for size and speed -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     
 
   </head>
@@ -67,8 +67,10 @@
           
           <div id="flights" class="content-box">
             <h2 class="sectiontitle">TYPICAL FLIGHTS</h2>
+            <h3 v-if="flights.Quotes.length === 0">Flight data not available</h3>
             <div class="flight" v-for="(quote, index) in flights.Quotes">
               <div class="flight-details">
+                
                 <div class="outbound">
                   <h3>
                     {{ quote.OutboundLeg.DepartureDate.slice(8,10) }} /
