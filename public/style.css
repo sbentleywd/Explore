@@ -203,6 +203,8 @@ p {
   
   justify-content: flex-start;
   overflow-y: auto;
+  -webkit-overflow-y: auto;
+  
   width: 300px;
   min-width: 300px;
 }
@@ -211,16 +213,19 @@ p {
   width: 100%; 
 }
 
-.destination-image-container {
-  height: 90%;
-  position: relative;
-
-}
 
 .images-container {
   display: flex;
   overflow-x: auto;
+  height: 500px;
+  -webkit-overflow-x: auto;
   width: 100%;
+}
+
+.destination-image-container {
+  height: 90%;
+  position: relative;
+
 }
 
 .destination-image-container img {
