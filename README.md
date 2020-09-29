@@ -8,7 +8,7 @@ A [live demo](https://tranquil-garden-84884.herokuapp.com/) of the project is ho
 
 ## Local
 
-Explore can be run locally by downloading the repo and running the following commands
+Explore can be run locally by downloading the repo and running the following commands.
 
 ```bash
 npm install
