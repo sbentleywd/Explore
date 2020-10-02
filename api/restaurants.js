@@ -3,12 +3,13 @@ const restaurantsRouter = express.Router();
 const fetch = require('node-fetch');
 
 restaurantsRouter.param('location', async (req, res, next, location) => {
-    
+    // adds location to request
     req.location = location;
     next();
 })
 
 restaurantsRouter.get("/:location", async (req, res) => {
+    // queries yelp api for restaurants in destination city sorted by rating. 
     const location = req.location
     const apiKey = process.env.YELP_KEY    
     const fetchOptions = {

@@ -3,12 +3,14 @@ const weatherRouter = express.Router();
 const fetch = require('node-fetch');
 
 weatherRouter.param('location', (req, res, next, location) => {
+    // adds location to request
     req.location=location;
     next();
 })
 
 
 weatherRouter.get("/:location", async (req, res) => {
+    // queries open weather api for current weather information at destination
     const openWeatherKey = process.env.OPENWEATHER_KEY;
     const location = req.location
     const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';

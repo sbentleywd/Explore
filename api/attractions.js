@@ -3,12 +3,14 @@ const attractionsRouter = express.Router();
 const fetch = require('node-fetch');
 
 attractionsRouter.param('location', (req, res, next, location) => {
+    // attaches location param to request
     req.location=location;
     next();
 })
 
 attractionsRouter.get("/:location", async (req, res) => {
-    
+    // gets attractions from foursquare api
+
     const attractionsUrl = 'https://api.foursquare.com/v2/venues/explore?near=';
     const clientId = process.env.FOURSQUARE_CLIENT_ID
     const clientSecret = process.env.FOURSQUARE_CLIENT_SECRET
