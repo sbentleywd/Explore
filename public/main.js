@@ -72,17 +72,18 @@ var app = new Vue({
       await this.reset();
       // set loading true
       this.loading = true;
-      // 
+      // get all data
       await this.getVenues();
       await this.getForecast();
       await this.getRestaurants();
       await this.getFlights();
       await this.getImages();
+      // loading finished
       this.loading = false;      
 
     },
     getVenues: async function() {
-      
+      // hits attractions api endpoint
       const location = this.city
       const urlToFetch = `${baseUrl}/attractions/${location}`;
       try {
@@ -90,10 +91,9 @@ var app = new Vue({
         if (response.ok) {
           const jsonResponse = await response.json();
           const venues = jsonResponse.response.groups[0].items.map(item => item.venue);
+          // limits number of parks returned to 2, some cities returning 7-8 parks in top ten attractions
           let newVenues = []
           let parks = 0
-          
-          
           for (let i = 0; i < venues.length; i++) {
             if (newVenues.length < 10) {
               if (venues[i].categories[0].name === 'Park') {
@@ -124,6 +124,7 @@ var app = new Vue({
       return;
     },
     getForecast: async function () {
+      // hits weather endpoint & returns forecast object to data
       const location = this.city
       const urlToFetch = `${baseUrl}/weather/${location}`;
       try {
@@ -140,6 +141,7 @@ var app = new Vue({
       return;
     },
     getRestaurants: async function () {
+      // hits restaurant endpoint and returns restaurant object to data
       const location = this.city
       const urlToFetch = `${baseUrl}/restaurants/${location}`;
       try {
@@ -156,6 +158,7 @@ var app = new Vue({
       return;
     },
     getFlights: async function () {
+      // hits flights endpoint and returns flights object to data
       const location = this.city
       const from = this.from
       const urlToFetch = `${baseUrl}/flights/${location}/${from}`;
