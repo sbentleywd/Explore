@@ -1,188 +1,165 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Explore</title>
-		<link rel="stylesheet" type="text/css" href="reset.css" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link
-			href="https://fonts.googleapis.com/css?family=Montserrat"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Work+Sans"
-			rel="stylesheet"
-		/>
-		<!-- development version, includes helpful console warnings -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-		<!-- production version, optimized for size and speed -->
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Work+Sans"
+      rel="stylesheet"
+    />
+    <!-- development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  </head>
 
-	<body>
-		<div id="app">
-			<main>
-				<div class="search">
-					<h1>Where do you want to go today?</h1>
-					<form autocomplete="off" @submit.prevent="search">
-						<div class="input-container">
-							<div><h2>To:</h2></div>
-							<input
-								v-model="city"
-								type="text"
-								id="city"
-								placeholder="Enter a city"
-							/>
-						</div>
-						<div class="input-container">
-							<div><h2>From:</h2></div>
-							<input
-								v-model="from"
-								type="text"
-								id="from"
-								placeholder="Enter a city"
-							/>
-						</div>
+  <body>
+    <div id="app">
+      <main>
+        <div class="search">
+          <h1>Where do you want to go today?</h1>
+          <form autocomplete="off" @submit.prevent="search">
+            <div class="input-container">
+              <div><h2>To:</h2></div>
+              <input
+                v-model="city"
+                type="text"
+                id="city"
+                placeholder="Enter a city"
+              />
+            </div>
+            <div class="input-container">
+              <div><h2>From:</h2></div>
+              <input
+                v-model="from"
+                type="text"
+                id="from"
+                placeholder="Enter a city"
+              />
+            </div>
 
-						<button id="button" type="submit">Submit</button>
-					</form>
-					<span class="attribution"
-						>Photo by
-						<a
-							href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-							>Robert Bock</a
-						>
-						on
-						<a
-							href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-							>Unsplash</a
-						></span
-					>
-				</div>
-			</main>
-			<div id="description" v-if="!loading && !loaded">
-				<h2>
-					Search for a city to view top attractions, restaurants,
-					flights, weather and images
-				</h2>
-			</div>
-			<div id="loading" v-if="loading">
-				<h2>Loading destination details...</h2>
-				<div id="spinner"></div>
-			</div>
-			<div id="destination" v-if="loaded">
-				<h2>{{ forecast.name }}</h2>
-			</div>
+            <button id="button" type="submit">Submit</button>
+          </form>
+          <span class="attribution"
+            >Photo by
+            <a
+              href="https://unsplash.com/@robertbock?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+              >Robert Bock</a
+            >
+            on
+            <a
+              href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+              >Unsplash</a
+            ></span
+          >
+        </div>
+      </main>
+      <div id="description" v-if="!loading && !loaded">
+        <h2>
+          Search for a city to view top attractions, restaurants, flights,
+          weather and images
+        </h2>
+      </div>
+      <div id="loading" v-if="loading">
+        <h2>Loading destination details...</h2>
+        <div id="spinner"></div>
+      </div>
+      <div id="destination" v-if="loaded">
+        <h2>{{ forecast.name }}</h2>
+      </div>
 
-			<div class="container" v-if="loaded">
-				<div id="venues" class="content-box">
-					<h2 class="sectiontitle">TOP ATTRACTIONS</h2>
-					<div v-for="(venue, index) in venues" class="venue">
-						<h3>{{ venue.name }}</h3>
-						<img class="venueimage" :src="venueIconUrls[index]" />
-					</div>
-				</div>
+      <div class="container" v-if="loaded">
+        <div id="venues" class="content-box">
+          <h2 class="sectiontitle">TOP ATTRACTIONS</h2>
+          <div v-for="(venue, index) in venues" class="venue">
+            <h3>{{ venue.name }}</h3>
+            <img class="venueimage" :src="venueIconUrls[index]" />
+          </div>
+        </div>
 
-				<div id="restaurants" class="content-box">
-					<h2 class="sectiontitle">TOP RESTAURANTS</h2>
-					<div
-						v-for="(restaurant, index) in restaurants"
-						class="restaurant"
-					>
-						<a :href="restaurant.url"
-							><h3>{{ restaurant.name }}</h3></a
-						>
-						<h3 class="price">{{ restaurant.price }}</h3>
-					</div>
-				</div>
+        <div id="restaurants" class="content-box">
+          <h2 class="sectiontitle">TOP RESTAURANTS</h2>
+          <div v-for="(restaurant, index) in restaurants" class="restaurant">
+            <a :href="restaurant.url"><h3>{{ restaurant.name }}</h3></a>
+            <h3 class="price">{{ restaurant.price }}</h3>
+          </div>
+        </div>
 
-				<div id="flights" class="content-box">
-					<h2 class="sectiontitle">TYPICAL FLIGHTS</h2>
-					<h3 v-if="flights.Quotes.length === 0">
-						Flight data not available
-					</h3>
-					<div
-						class="flight"
-						v-for="(quote, index) in flights.Quotes"
-					>
-						<div class="flight-details">
-							<div class="outbound">
-								<h3>
-									{{
-									quote.OutboundLeg.DepartureDate.slice(8,10)
-									}} / {{
-									quote.OutboundLeg.DepartureDate.slice(5,7)
-									}} / {{
-									quote.OutboundLeg.DepartureDate.slice(0,4)
-									}}, {{ flights.Carriers.find(carrier =>
-									carrier.CarrierId ===
-									quote.OutboundLeg.CarrierIds[0]).Name }}
-								</h3>
-							</div>
-							<div class="inbound">
-								<h3>
-									{{
-									quote.InboundLeg.DepartureDate.slice(8,10)
-									}} / {{
-									quote.InboundLeg.DepartureDate.slice(5,7) }}
-									/ {{
-									quote.InboundLeg.DepartureDate.slice(0,4)
-									}}, {{ flights.Carriers.find(carrier =>
-									carrier.CarrierId ===
-									quote.InboundLeg.CarrierIds[0]).Name }}
-								</h3>
-							</div>
-						</div>
-						<h3>
-							{{ flights.Currencies[0].Symbol }}{{ quote.MinPrice
-							}}
-						</h3>
-					</div>
-				</div>
+        <div id="flights" class="content-box">
+          <h2 class="sectiontitle">TYPICAL FLIGHTS</h2>
+          <h3 v-if="flights.Quotes.length === 0">Flight data not available</h3>
+          <div class="flight" v-for="(quote, index) in flights.Quotes">
+            <div class="flight-details">
+              <div class="outbound">
+                <h3>
+                  {{ quote.OutboundLeg.DepartureDate.slice(8,10) }} / {{
+                  quote.OutboundLeg.DepartureDate.slice(5,7) }} / {{
+                  quote.OutboundLeg.DepartureDate.slice(0,4) }}, {{
+                  flights.Carriers.find(carrier => carrier.CarrierId ===
+                  quote.OutboundLeg.CarrierIds[0]).Name }}
+                </h3>
+              </div>
+              <div class="inbound">
+                <h3>
+                  {{ quote.InboundLeg.DepartureDate.slice(8,10) }} / {{
+                  quote.InboundLeg.DepartureDate.slice(5,7) }} / {{
+                  quote.InboundLeg.DepartureDate.slice(0,4) }}, {{
+                  flights.Carriers.find(carrier => carrier.CarrierId ===
+                  quote.InboundLeg.CarrierIds[0]).Name }}
+                </h3>
+              </div>
+            </div>
+            <h3>{{ flights.Currencies[0].Symbol }}{{ quote.MinPrice }}</h3>
+          </div>
+        </div>
 
-				<div id="weather" class="content-box">
-					<h2 class="sectiontitle">CURRENT WEATHER</h2>
-					<h3>Temperature: {{celciusTemp}}&deg;C</h3>
-					<h3>Condition: {{forecast.weather[0].description}}</h3>
-					<h3>Wind Speed: {{forecast.wind.speed}}</h3>
-					<img class="weathericon" v-bind:src="weatherIconUrl" />
-				</div>
+        <div id="weather" class="content-box">
+          <h2 class="sectiontitle">CURRENT WEATHER</h2>
+          <h3>Temperature: {{celciusTemp}}&deg;C</h3>
+          <h3>Condition: {{forecast.weather[0].description}}</h3>
+          <h3>Wind Speed: {{forecast.wind.speed}}</h3>
+          <img class="weathericon" v-bind:src="weatherIconUrl" />
+        </div>
 
-				<div id="images" class="content-box-large">
-					<h2 class="sectiontitle">Images</h2>
-					<div class="images-container">
-						<div
-							class="destination-image-container"
-							v-for="(image, index) in images"
-						>
-							<img
-								class="destination-image"
-								:src="imageUrls[index].imageUrl"
-								:alt="imageUrls[index].alt"
-							/>
-							<span class="attribution"
-								>Photo by
-								<a :href="imageUrls[index].userUrl"
-									>{{image.user}}</a
-								>
-								on
-								<a
-									href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-									>Unsplash</a
-								></span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script
-			src="https://code.jquery.com/jquery-3.2.1.min.js"
-			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			crossorigin="anonymous"
-		></script>
+        <div id="images" class="content-box-large">
+          <h2 class="sectiontitle">Images</h2>
+          <div class="images-container">
+            <div
+              class="destination-image-container"
+              v-for="(image, index) in images"
+            >
+              <img
+                class="destination-image"
+                :src="imageUrls[index].imageUrl"
+                :alt="imageUrls[index].alt"
+              />
+              <span class="attribution"
+                >Photo by
+                <a :href="imageUrls[index].userUrl">{{image.user}}</a>
+                on
+                <a
+                  href="https://unsplash.com/s/photos/city?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+                  >Unsplash</a
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
 
-		<script src="main.js"></script>
-	</body>
+    <script src="main.js"></script>
+  </body>
 </html>
